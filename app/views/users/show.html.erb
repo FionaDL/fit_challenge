@@ -1,0 +1,23 @@
+<label> Name: </label>
+<%= @user.name %><br>
+<label> Height: </label>
+<%= @user.height %><br>
+<label> Weight: </label>
+<%= @user.weight %><br>
+<label> Quote: </label>
+<%= @user.quote %><br>
+
+<label> Current Challenges: </label>
+  <%= @challenges.each do |challenge| %>
+    <%=challenge.name%>
+    <%= link_to "Challenge", challenge_path(challenge)%>
+  <%end%>
+<label> Expired Challenges: </label>
+<%= @expired_challenges.each do |challenge| %>
+  <%=challenge.name%>
+  <%= link_to "Challenge", challenge_path(challenge)%>
+<%end%>
+
+
+<%= link_to "Create a New Challenge", new_challenge,%>
+ <!--this should be nested user and the challenge -->
