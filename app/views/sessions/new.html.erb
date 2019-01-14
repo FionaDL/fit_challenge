@@ -3,7 +3,7 @@
 <% end %>
 
 
-<%= form_for @user do |f|%>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f|%>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :password %>
