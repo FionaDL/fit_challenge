@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_183454) do
+ActiveRecord::Schema.define(version: 2019_01_14_150353) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
-    t.integer "days"
     t.integer "workout_amount"
     t.string "prize"
     t.text "notes"
@@ -22,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_01_11_183454) do
     t.integer "workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "users", force: :cascade do |t|

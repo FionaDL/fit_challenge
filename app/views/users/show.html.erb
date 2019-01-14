@@ -10,14 +10,14 @@
 <label> Current Challenges: </label>
   <%= @challenges.each do |challenge| %>
     <%=challenge.name%>
-    <%= link_to "Challenge", challenge_path(challenge)%>
+    <%= link_to "Challenge", user_challenge_path(challenge)%>
   <%end%>
 <label> Expired Challenges: </label>
 <%= @expired_challenges.each do |challenge| %>
   <%=challenge.name%>
-  <%= link_to "Challenge", challenge_path(challenge)%>
+  <%= link_to "Challenge", user_challenge_path(challenge)%>
 <%end%>
 
 
-<%= link_to "Create a New Challenge", new_challenge,%>
+<%= link_to "Create a New Challenge", new_user_challenge_path %>
  <!--this should be nested user and the challenge -->

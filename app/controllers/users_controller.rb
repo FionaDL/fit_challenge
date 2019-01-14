@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
  def show
    @user = User.find_by(id: params[:id])
+   @challenges = @user.challenges.current
  end
 
  private
