@@ -1,0 +1,21 @@
+<% if @message %>
+  <%= @message %>
+<% end %>
+
+
+<%= form_for @challenge do |f|%>
+  <%= f.hidden_field :user_id %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date %>
+  <%= f.label :workout_amount %>
+  <%= f.text_field :workout_amount %>
+  <%= f.label :prize %>
+  <%= f.text_field :prize%>
+  <%= f.label :notes %>
+  <%= f.text_field :notes%>
+  <%= f.submit "Create Challenge" %>
+<% end %>

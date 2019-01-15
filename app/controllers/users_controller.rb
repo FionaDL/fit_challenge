@@ -17,12 +17,19 @@ class UsersController < ApplicationController
 
  def show
    @user = User.find_by(id: params[:id])
-   @challenges = @user.challenges.current
+   if !@user.challenges.empty?
+     @challenges = @user.challenges
+     binding.pry
+     @current_challenges = current(@challenges)
+     @expired_challenges = @user.challenges.expired
+   end
  end
 
  private
 
- def user_params
-    params.require(:user).permit(:name, :password, :height, :weight, :quote)
- end
+    def user_params
+      params.require(:user).permit(:name, :password, :height, :weight, :quote)
+    end
+
+
 end
