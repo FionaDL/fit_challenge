@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
 
  resources :users do
-   resources :challenges
+   resources :challenges, only: [:new, :create]
+   resources :workouts, only: [:new, :create]
  end
 
- resources :challenges
+ resources :challenges, only: [:index, :show, :edit, :update, :destroy]
+ resources :workouts, only: [:index, :show, :edit, :update, :destroy]
+
 
 end
