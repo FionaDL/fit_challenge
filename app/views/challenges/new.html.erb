@@ -3,7 +3,7 @@
 <% end %>
 
 
-<%= form_for @challenge do |f|%>
+<%= form_for [@user, @challenge] do |f|%>
   <%= f.hidden_field :user_id %>
   <%= f.label :name %>
   <%= f.text_field :name %>

@@ -1,14 +1,14 @@
 class ChallengesController < ApplicationController
 
   def new
-    @challenge = Challenge.new(user_id: params[:user_id])
-
+    @user = User.find_by(id: params[:user_id])
+    @challenge = Challenge.new
   end
 
   def create
     @challenge = Challenge.create(challenge_params)
     if @challenge.save
-      redirect_to user_challenge_path(@challenge.user_id, @challenge)
+      redirect_to challenge_path(@challenge)
     else
       @message = "Please fillout all information to create a challege."
       render 'new'
