@@ -1,0 +1,11 @@
+<% if @message %>
+  <%= @message %>
+<% end %>
+
+
+<%= form_for [@user, @workout] do |f|%>
+  <%= f.hidden_field :user_ids %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Add Workout" %>
+<% end %>
