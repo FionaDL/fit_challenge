@@ -8,18 +8,16 @@
 <%= @user.quote %><br>
 
 <% if @current_challenges || @expired_challenges %>
-  <label> Current Challenges: </label>
-    <%= @current_challenges.each do |challenge| %>
-      <%=challenge.name%>
-      <%= link_to "Challenge", user_challenge_path(challenge)%>
+  <label> Current Challenges: </label><br>
+    <% @current_challenges.each do |challenge| %>
+      <%= link_to challenge.name, challenge_path(challenge)%><br>
     <%end%>
-    <label> Expired Challenges: </label>
-      <%= @expired_challenges.each do |challenge| %>
-        <%=challenge.name%>
-        <%= link_to "Challenge", user_challenge_path(challenge)%>
+    <label> Expired Challenges: </label><br>
+      <% @expired_challenges.each do |challenge| %>
+        <%= link_to challenge.name, challenge_path(challenge)%><br>
       <%end%>
 <%end%>
 
 
-<%= link_to "Create a New Challenge", new_user_challenge_path(@user) %>
+<%= link_to "Create a New Challenge", new_challenge_path %>
  <!--this should be nested user and the challenge -->

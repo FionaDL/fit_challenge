@@ -1,4 +1,5 @@
 class Workout < ApplicationRecord
-  has_many :challenges
-  has_many :users, through: :challenges
+  has_many :challenge_workouts
+  has_many :challenges, through: :challenge_workouts
+
 end

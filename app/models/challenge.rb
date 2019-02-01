@@ -1,15 +1,12 @@
 class Challenge < ApplicationRecord
   belongs_to :user
-  has_many :workouts
+  has_many :challenge_workouts
+  has_many :workouts, through: :challenge_workouts
 
-  def current(challenges)
-    challenges.map do |challenge|
-      !challenge.end_date.past?
-    end
-  end
-
-  def expired
-    self.end_date.past?
+  def add_workout(workout)
+    @workouts = @challenge.workouts
+    @workouts << workout
+    @workouts.save
   end
 
 end

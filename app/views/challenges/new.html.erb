@@ -3,18 +3,18 @@
 <% end %>
 
 
-<%= form_for [@user, @challenge] do |f|%>
-  <%= f.hidden_field :user_id %>
+<%= form_for @challenge do |f|%>
+  <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :start_date %>
   <%= f.date_field :start_date %>
   <%= f.label :end_date %>
   <%= f.date_field :end_date %>
-  <%= f.label :workout_amount %>
-  <%= f.text_field :workout_amount %>
-  <%= f.label :prize %>
-  <%= f.text_field :prize%>
+  <%= f.label :workouts_needed %>
+  <%= f.text_field :workouts_needed %>
+  <%= f.label :reward %>
+  <%= f.text_field :reward%>
   <%= f.label :notes %>
   <%= f.text_field :notes%>
   <%= f.submit "Create Challenge" %>

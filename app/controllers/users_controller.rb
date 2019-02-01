@@ -19,9 +19,8 @@ class UsersController < ApplicationController
    @user = User.find_by(id: params[:id])
    if !@user.challenges.empty?
      @challenges = @user.challenges
-     binding.pry
-     @current_challenges = current(@challenges)
-     @expired_challenges = @user.challenges.expired
+     @current_challenges = @user.current_challenges(@challenges)
+     @expired_challenges = @user.expired_challenges(@challenges)
    end
  end
 

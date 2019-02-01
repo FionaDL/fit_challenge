@@ -3,9 +3,9 @@
 <% end %>
 
 
-<%= form_for [@user, @workout] do |f|%>
-  <%= f.hidden_field :user_ids %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_for [@challenge, @workout] do |f|%>
+  <%= f.hidden_field :challenge_id, value: @challenge.id %>
+  <%= f.label :kind %>
+  <%= f.text_field :kind %>
   <%= f.submit "Add Workout" %>
 <% end %>

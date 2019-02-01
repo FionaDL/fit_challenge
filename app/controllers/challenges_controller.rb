@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
 
   def new
-    @user = User.find_by(id: params[:user_id])
+    @user = current_user
     @challenge = Challenge.new
   end
 
@@ -17,12 +17,13 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find_by(id: params[:id])
+
   end
 
   private
 
   def challenge_params
-    params.require(:challenge).permit(:name, :start_date, :end_date, :prize, :notes, :workout_amount, :user_id)
+    params.require(:challenge).permit(:name, :start_date, :end_date, :reward, :notes, :workouts_needed, :user_id)
   end
 
 end

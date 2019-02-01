@@ -6,15 +6,16 @@ class WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
-    @user = User.find_by(id: (params[:user_id]))
+    @challenge = Challenge.find_by(id: (params[:challenge_id]))
+    @user_id = current_user.id
   end
 
   def create
     @workout = Workout.create(workout_params)
     if @workout.save
-      redirect_to challenge_path(@workout)
+      redirect_to new_challenge_workout_path
     else
-      @message = "Please fillout all information to create a challege."
+      @message = "Please fillout all information to create a workout."
       render 'new'
     end
   end
@@ -22,7 +23,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :user_ids, :challenge_ids)
+    params.require(:workout).permit(:kind)
   end
 
 end

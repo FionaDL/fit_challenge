@@ -6,12 +6,16 @@ Rails.application.routes.draw do
  delete "/signout", to: "sessions#destroy"
 
 
- resources :users do
-   resources :challenges, only: [:new, :create]
+ resources :users
+
+
+
+ resources :challenges do
    resources :workouts, only: [:new, :create]
  end
 
- resources :challenges, only: [:index, :show, :edit, :update, :destroy]
+ resources :challengeworkouts
+
  resources :workouts, only: [:index, :show, :edit, :update, :destroy]
 
 
