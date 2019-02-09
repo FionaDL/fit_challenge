@@ -1,4 +1,4 @@
-class CreateChallengeWorkouts < ActiveRecord::Migration[5.2]
+class CreateChallengeworkouts < ActiveRecord::Migration[5.2]
   def change
     create_table :challengeworkouts do |t|
       t.integer :challenge_id

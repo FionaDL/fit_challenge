@@ -1,0 +1,12 @@
+<% if @message %>
+  <%= @message %>
+<% end %>
+
+
+<%= form_for @challengeworkout, :url => url_for(:controller => 'challengeworkouts', :action => 'update') do |f|%>
+  <%= f.hidden_field :challenge_id, value: @challenge_id %>
+  <%= f.hidden_field :workout_id, value: @workout_id %>
+  <%= f.label :workout_duration, "How long was this workout?" %>
+  <%= f.text_field :workout_duration %>
+  <%= f.submit "Add Workout Duration" %>
+<% end %>

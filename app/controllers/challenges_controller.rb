@@ -17,7 +17,8 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find_by(id: params[:id])
-
+    @challengeworkouts = @challenge.challengeworkouts
+    @workouts = @challenge.workouts
   end
 
   private

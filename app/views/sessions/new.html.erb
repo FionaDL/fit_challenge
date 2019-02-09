@@ -2,11 +2,10 @@
 <%= @message %>
 <% end %>
 
-
-<%= form_for(:session, url: signin_path) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.submit "Sign In" %>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+  <%= f.label :name%><br>
+  <%= f.collection_select :name, User.all, :name, :name %><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password, id: 'password'%><br>
+  <%= f.submit 'Sign In' %>
 <% end %>

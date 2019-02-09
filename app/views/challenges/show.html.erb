@@ -13,15 +13,19 @@
 <label> Notes: </label>
 <%= @challenge.notes %><br>
 
-<% @challenge.workouts.each do |workout| %>
-  <li><%= workout.name %></li>
-<%end%>
+
+<% @challengeworkouts.each do |workout| %>
+  <li> Kind of Workout: <%= workout.workout.kind%> Duration: <%= workout.workout_duration %> </li>
+<% end %>
+
+
 
 
 <h3>Workouts left to complete this challenge:</h3><br>
-<%= %>
+<%= @challenge.left_to_complete(@challenge.workouts_needed) %>
 
 <h3>Add a New Workout to this Challenge!</h3>
   <%= link_to "Add a Workout", new_challenge_workout_path(@challenge) %>
 
 <h3> Number of Workouts Completed in this Challenge. </h3>
+ <%= @challenge.workouts.size %>

@@ -8,13 +8,13 @@ Rails.application.routes.draw do
 
  resources :users
 
-
+ resources :challengeworkouts, only: [:new, :create, :edit, :update]
 
  resources :challenges do
    resources :workouts, only: [:new, :create]
  end
 
- resources :challengeworkouts
+
 
  resources :workouts, only: [:index, :show, :edit, :update, :destroy]
 

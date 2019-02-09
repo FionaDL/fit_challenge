@@ -11,9 +11,10 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.create(workout_params)
+    @workout = Workout.create(kind: params[:workout][:kind])
+    @challengeworkout = Challengeworkout.create(challenge_id: params[:challenge_id], workout_id: @workout.id )
     if @workout.save
-      redirect_to new_challenge_workout_path
+      redirect_to edit_challengeworkout_path(@challengeworkout)
     else
       @message = "Please fillout all information to create a workout."
       render 'new'
@@ -22,8 +23,5 @@ class WorkoutsController < ApplicationController
 
   private
 
-  def workout_params
-    params.require(:workout).permit(:kind)
-  end
 
 end
