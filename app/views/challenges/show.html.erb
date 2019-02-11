@@ -1,3 +1,4 @@
+
 <h2>This Challenge Was create by <%= @challenge.user.name %>.</h2>
 
 <label> Name: </label>
@@ -29,3 +30,5 @@
 
 <h3> Number of Workouts Completed in this Challenge. </h3>
  <%= @challenge.workouts.size %>
+
+ <h3> <%= link_to "Return to Home Page.", user_path(@challenge.user.id) %></h3>

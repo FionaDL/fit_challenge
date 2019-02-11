@@ -10,7 +10,6 @@ class ChallengesController < ApplicationController
     if @challenge.save
       redirect_to challenge_path(@challenge)
     else
-      @message = "Please fillout all information to create a challege."
       render 'new'
     end
   end

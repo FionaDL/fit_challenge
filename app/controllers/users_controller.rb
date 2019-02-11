@@ -10,7 +10,6 @@ class UsersController < ApplicationController
        session[:user_id] = @user.id
        redirect_to user_path(@user)
      else
-       @message = "Please enter all information to create a user."
        render 'new'
      end
  end
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
  private
 
     def user_params
-      params.require(:user).permit(:name, :password, :height, :weight, :quote)
+      params.require(:user).permit(:name, :password, :password_confirmation, :height, :weight, :quote)
     end
 
 
