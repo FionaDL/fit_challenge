@@ -10,6 +10,7 @@ class ChallengesController < ApplicationController
     if @challenge.save
       redirect_to challenge_path(@challenge)
     else
+      @user = current_user
       render 'new'
     end
   end

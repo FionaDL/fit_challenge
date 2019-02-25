@@ -18,8 +18,8 @@ class UsersController < ApplicationController
    @user = User.find_by(id: params[:id])
    if !@user.challenges.empty?
      @challenges = @user.challenges
-     @current_challenges = @user.current_challenges(@challenges)
-     @expired_challenges = @user.expired_challenges(@challenges)
+     @current_challenges = @user.challenges.current_challenges
+     @expired_challenges = @user.challenges.expired_challenges
    end
  end
 

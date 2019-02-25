@@ -3,5 +3,5 @@ class Workout < ApplicationRecord
   has_many :challenges, through: :challengeworkouts
 
   validates :kind, presence: true
-  
+
 end

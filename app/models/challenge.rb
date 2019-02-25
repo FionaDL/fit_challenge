@@ -19,5 +19,8 @@ class Challenge < ApplicationRecord
     workouts_needed - self.workouts.size
   end
 
+  scope :expired_challenges, -> {where("end_date < ?", Date.today)}
+  scope :current_challenges, -> {where('end_date >= ?', Date.today)}
+
 
 end
