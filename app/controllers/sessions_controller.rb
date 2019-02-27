@@ -6,7 +6,10 @@ class SessionsController < ApplicationController
 
   def create
     if auth
-        @user = User.find_or_create_by(:uid => auth['uid'])
+        @user = User.find_or_create_by(:uid => auth['uid']) do |user|
+          user.name = auth['info']['name']
+          user.password = user.password_confirmation = SecureRandom.urlsafe_base64(n=6)
+        end
         session[:user_id] = @user.id
        redirect_to user_path(@user)
      else

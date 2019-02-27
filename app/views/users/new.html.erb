@@ -13,19 +13,20 @@
   </div>
 <% end %>
 
-
+<div class= "form_container">
 <%= form_for @user do |f|%>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
-  <%= f.label :weight %>
-  <%= f.number_field :weight %>
-  <%= f.label :height %>
-  <%= f.number_field :height%>
-  <%= f.label :quote %>
-  <%= f.text_area :quote%>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :password %><br>
+  <%= f.text_field :password %><br>
+  <%= f.label :password_confirmation %><br>
+  <%= f.text_field :password_confirmation %><br>
+  <%= f.label :weight %><br>
+  <%= f.number_field :weight %><br>
+  <%= f.label :height %><br>
+  <%= f.number_field :height%><br>
+  <%= f.label :quote %><br>
+  <%= f.text_area :quote%><br>
   <%= f.submit "Sign Up" %>
 <% end %>
+</div>

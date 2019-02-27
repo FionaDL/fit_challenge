@@ -1,3 +1,9 @@
+<ul>
+  <li><%= link_to "Create a New Challenge", new_challenge_path %></li>
+  <li><%= link_to 'Log Out', signout_path, method: :delete %></li>
+</ul>
+
+
 <label> Name: </label>
 <%= @user.name %><br>
 <label> Height: </label>
@@ -19,5 +25,4 @@
 <%end%>
 
 
-<%= link_to "Create a New Challenge", new_challenge_path %>
  <!--this should be nested user and the challenge -->
