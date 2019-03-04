@@ -1,28 +1,41 @@
-<ul>
-  <li><%= link_to "Create a New Challenge", new_challenge_path %></li>
-  <li><%= link_to 'Log Out', signout_path, method: :delete %></li>
+<ul class="topnav">
+  <li class="menu"><%= link_to "Create a New Challenge", new_challenge_path %></li>
+  <li class="menu"><%= link_to 'Log Out', signout_path, method: :delete %></li>
 </ul>
 
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div id="sidebar" class="col-md-4">
 
-<label> Name: </label>
-<%= @user.name %><br>
-<label> Height: </label>
-<%= @user.height %><br>
-<label> Weight: </label>
-<%= @user.weight %><br>
-<label> Quote: </label>
-<%= @user.quote %><br>
+      <label> Name: </label>
+        <%= @user.name %><br>
+      <label> Height: </label>
+        <%= @user.height %><br>
+      <label> Weight: </label>
+        <%= @user.weight %><br>
+      <label> Quote: </label>
+        <%= @user.quote %><br>
+      </div>
+  </div>
 
 <% if @current_challenges || @expired_challenges %>
+  <div class = "row">
+      <div id="middle" class="col-md-4">
   <label> Current Challenges: </label><br>
     <% @current_challenges.each do |challenge| %>
       <%= link_to challenge.name, challenge_path(challenge)%><br>
     <%end%>
+    </div>
+  </div>
+  <div class="row">
+      <div id="left" class="col-md-4">
     <label> Expired Challenges: </label><br>
       <% @expired_challenges.each do |challenge| %>
         <%= link_to challenge.name, challenge_path(challenge)%><br>
       <%end%>
+      </div>
+  </div>
 <%end%>
-
+</div>
 
  <!--this should be nested user and the challenge -->
