@@ -1,12 +1,9 @@
-<ul>
-  <li><%= link_to "Return to Home Page.", user_path(@challenge.user.id) %></li>
-  <li><%= link_to 'Log Out', signout_path, method: :delete %></li>
 
-</ul>
+ <%= render 'bar' %>
 
 
-<h2>This Challenge Was create by <%= @challenge.user.name %>.</h2>
-
+<label> Challenge Created By:</label>
+  <%= @user.name %>
 <label> Name: </label>
 <%= @challenge.name %><br>
 <label> Start Date: </label>
@@ -36,5 +33,3 @@
 
 <h3> Number of Workouts Completed in this Challenge. </h3>
  <%= @challenge.workouts.size %>
-
- <h3> <%= link_to "Return to Home Page.", user_path(@challenge.user.id) %></h3>
