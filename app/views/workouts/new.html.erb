@@ -1,3 +1,6 @@
+<%= render "challenges/bar" %>
+
+
 <% if @workout.errors.any? %>
   <div id="error_explanation">
     <h3>
@@ -13,10 +16,11 @@
   </div>
 <% end %>
 
-
+<div class= "top-buffer">
 <%= form_for [@challenge, @workout] do |f|%>
   <%= f.hidden_field :challenge_id, value: @challenge.id %>
-  <%= f.label :kind %>
+  <%= f.label "Type of Workout:" %>
   <%= f.text_field :kind %>
   <%= f.submit "Add Workout" %>
 <% end %>
+</div>

@@ -4,6 +4,7 @@
      @challengeworkout = Challengeworkout.find_by(id: params[:id])
      @challenge_id = @challengeworkout.challenge_id
      @workout_id = @challengeworkout.workout_id
+     @user = current_user
    end
 
    def update

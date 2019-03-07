@@ -1,35 +1,38 @@
 
  <%= render 'bar' %>
 
+ <div  class="container">
+   <div class="row top-buffer">
+     <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+       <label> Challenge Created By:</label>
+       <%= @user.name %><br>
+       <label> Challenge Name: </label>
+       <%= @challenge.name %><br>
+       <label> Start Date: </label>
+       <%= @challenge.start_date %><br>
+       <label> End Date: </label>
+       <%= @challenge.end_date %><br>
+       <label> Total Workouts Needed: </label>
+       <%= @challenge.workouts_needed %><br>
+       <label> Reward: </label>
+       <%= @challenge.reward %><br>
+       <label> Notes: </label>
+       <%= @challenge.notes %><br>
+       <label> Workouts left to complete this challenge:</label>
+       <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
+       <label> Workouts Completed in this Challenge: </label>
+       <%= @challenge.workouts.size %>
+      </div>
 
-<label> Challenge Created By:</label>
-  <%= @user.name %>
-<label> Name: </label>
-<%= @challenge.name %><br>
-<label> Start Date: </label>
-<%= @challenge.start_date %><br>
-<label> End Date: </label>
-<%= @challenge.end_date %><br>
-<label> Total Workouts Needed: </label>
-<%= @challenge.workouts_needed %><br>
-<label> Reward: </label>
-<%= @challenge.reward %><br>
-<label> Notes: </label>
-<%= @challenge.notes %><br>
+      <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <h5> Workouts: </h5>
+          <% @challengeworkouts.each do |workout| %>
+            <li> Kind of Workout: <%= workout.workout.kind%><br> Duration: <%= workout.workout_duration %> minutes </li>
+          <% end %>
+      </div>
 
-
-<% @challengeworkouts.each do |workout| %>
-  <li> Kind of Workout: <%= workout.workout.kind%> Duration: <%= workout.workout_duration %> </li>
-<% end %>
-
-
-
-
-<h3>Workouts left to complete this challenge:</h3><br>
-<%= @challenge.left_to_complete(@challenge.workouts_needed) %>
-
-<h3>Add a New Workout to this Challenge!</h3>
-  <%= link_to "Add a Workout", new_challenge_workout_path(@challenge) %>
-
-<h3> Number of Workouts Completed in this Challenge. </h3>
- <%= @challenge.workouts.size %>
+      <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <%= link_to "Add a Workout", new_challenge_workout_path(@challenge), :class => "btn btn-dark" %>
+      </div>
+    </div>
+  </div>

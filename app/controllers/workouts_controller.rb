@@ -1,13 +1,10 @@
 class WorkoutsController < ApplicationController
 
-  def index
-    @workouts = Workout.all
-  end
 
   def new
     @workout = Workout.new
     @challenge = Challenge.find_by(id: (params[:challenge_id]))
-    @user_id = current_user.id
+    @user = current_user
   end
 
   def create
