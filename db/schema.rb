@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_200958) do
+ActiveRecord::Schema.define(version: 2019_03_18_153507) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2019_02_20_200958) do
     t.integer "weight"
     t.integer "height"
     t.string "quote"
-    t.string "provider"
     t.string "uid"
   end
 

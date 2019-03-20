@@ -8,7 +8,7 @@ Rails.application.routes.draw do
  get '/auth/github/callback' => 'sessions#create'
 
 
- resources :users
+ resources :users, only: [:new, :create, :edit, :update, :show]
 
  resources :challengeworkouts, only: [:new, :create, :edit, :update]
 

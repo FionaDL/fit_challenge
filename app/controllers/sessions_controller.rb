@@ -11,13 +11,14 @@ class SessionsController < ApplicationController
           user.password = user.password_confirmation = SecureRandom.urlsafe_base64(n=6)
         end
         session[:user_id] = @user.id
-       redirect_to user_path(@user)
+        redirect_to edit_user_path(@user)
      else
        @user = User.find_by(name: params[:user][:name])
          if @user && @user.authenticate(params[:user][:password])
              session[:user_id] = @user.id
              redirect_to user_path(@user)
          else
+           @message = @user.errors
            render 'new'
          end
       end

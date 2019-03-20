@@ -14,6 +14,16 @@ class UsersController < ApplicationController
      end
  end
 
+ def edit
+    @user = User.find_by(id: params[:id])
+ end
+
+ def update
+   @user = User.find_by(id: params[:user][:user_id])
+   @user.update(weight: params[:user][:weight], height: params[:user][:height], quote: params[:user][:quote])
+   redirect_to user_path(@user)
+ end
+
  def show
    @user = User.find_by(id: params[:id])
    if !@user.challenges.empty?
