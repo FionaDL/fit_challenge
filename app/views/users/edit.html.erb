@@ -1,5 +1,20 @@
 <%= render "bar" %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being created:
+    </h3>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
 <h3> Please Enter the following information to finish setting up your account. </h3><br>
 <div class = 'container_form'>

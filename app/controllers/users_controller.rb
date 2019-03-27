@@ -21,7 +21,11 @@ class UsersController < ApplicationController
  def update
    @user = User.find_by(id: params[:user][:user_id])
    @user.update(weight: params[:user][:weight], height: params[:user][:height], quote: params[:user][:quote])
-   redirect_to user_path(@user)
+   if @user.save
+     redirect_to user_path(@user)
+   else
+     render 'edit'
+   end
  end
 
  def show
