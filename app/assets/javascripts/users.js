@@ -5,16 +5,22 @@ $(document).ready(function() {
 });
 
 function eventListeners() {
-  $('button#current-challenge-button').on('click', (e) => {
-    e.preventDefault()
-    console.log(e)
+  $('button#current-challenge-button').on('click', () => {
+
     let id = $(this).data("id")
     getCurrentChallenges(id)
   })
+
+  $('button#expired-challenge-button').on('click', () => {
+
+    let id = $(this).data("id")
+    getCurrentChallenges(id)
+  })
+
 }
 
 function getCurrentChallenges(id) {
-  $.get("/users/" + id + ".json", function(data) {
+  $.get("/users/" + 66 + ".json", function(data) {
     console.log(data)
   })
 }
