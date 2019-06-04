@@ -8,7 +8,10 @@ class UsersController < ApplicationController
    @user = User.create(user_params)
    if @user.save
        session[:user_id] = @user.id
-       redirect_to user_path(@user)
+       respond_to do |f|
+         f.html {render :show}
+         f.json {render json: @user}
+       end
      else
        render 'new'
    end
@@ -31,9 +34,13 @@ class UsersController < ApplicationController
  def show
    @user = User.find_by(id: params[:id])
    if !@user.challenges.empty?
-     @challenges = @user.challenges
      @current_challenges = @user.challenges.current_challenges
      @expired_challenges = @user.challenges.expired_challenges
+   end
+   respond_to do |f|
+     f.html {render :show}
+     f.json {render :json => {:user => @user, :current_challenges => @current_challenges, :expired_challenges => @expired_challenges}}
+
    end
  end
 

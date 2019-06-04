@@ -15,21 +15,13 @@
         <%= @user.quote %><br>
     </div>
 
-
-<% if @current_challenges || @expired_challenges %>
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-  <h5> Current Challenges: </h5><br>
-    <% @current_challenges.each do |challenge| %>
-      <%= link_to challenge.name, challenge_path(challenge)%><br>
-    <%end%>
+          <button id="current-challenge-button">Current Challenges...</button>
+
     </div>
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <h5> Expired Challenges: </h5><br>
-      <% @expired_challenges.each do |challenge| %>
-        <%= link_to challenge.name, challenge_path(challenge)%><br>
-      <%end%>
+          <button id="expired_challenge_button">Expired Challenges...</button>
       </div>
-<%end%>
   </div>
 </div>
 

@@ -17,6 +17,15 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def index
+    if params[:challenge_id]
+      @challenge=Challenge.find_by_id(params[:challenge_id])
+      @workouts = @challenge.workouts
+    else
+      @workouts = Workout.all
+    end
+  end
+
 
 
 end
