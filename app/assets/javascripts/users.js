@@ -20,8 +20,24 @@ function eventListeners() {
 
 function getCurrentChallenges(id) {
   $.get("/users/" + id + ".json", function(data) {
-    console.log(data)
+    appendCurrentChallenges(data)
   })
+}
+
+function appendCurrentChallenges(data) {
+  let challengeArray = data.current_challenges
+  console.log(challengeArray)
+  if (challengeArray == null) {
+    $("#challengeName").append("No Current Challenges Exist.")
+  }
+  else {
+  challengeArray.forEach(challenge => {
+    let newChallenge = new Challenge(challenge)
+    console.log(newChallenge.formatChallenge())
+    let challengeHtml = newChallenge.formatChallenge()
+    $("#current-challenges").append(challengeHtml)
+   })
+  }
 }
 
 function getExpiredChallenges(id) {
@@ -31,15 +47,21 @@ function getExpiredChallenges(id) {
 }
 
 
-
-
-
-
-class User {
-  constructor(user) {
-    this.id = user.id
-    this.weight = user.weight
-    this.height = user.height
-    this.quote = user.quote
+class Challenge {
+  constructor(challenge) {
+    this.id = challenge.id
+    this.name = challenge.name
+    this.start_date = challenge.start_date
+    this.end_date = challenge.end_date
+    this.workouts_needed = challenge.workouts_needed
+    this.reward = challenge.reward
+    this.notes = challenge.notes
+   }
   }
-}
+
+  Challenge.prototype.formatChallenge = function(){
+     return (`
+       <h2>Name: ${this.name}</h2>
+       <button id="more-info">More about this challenge...</button>
+       `)
+  }
