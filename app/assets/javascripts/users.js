@@ -16,6 +16,7 @@ function eventListeners() {
     let id = (e.currentTarget.dataset.id)
     getExpiredChallenges(id)
   })
+
 }
 
 function getCurrentChallenges(id) {
@@ -36,8 +37,17 @@ function appendCurrentChallenges(data) {
     console.log(newChallenge.formatChallenge())
     let challengeHtml = newChallenge.formatChallenge()
     $("#current-challenges").append(challengeHtml)
+    addMoreInfoListener()
    })
   }
+}
+
+function addMoreInfoListener() {
+  $('button.more-info').on('click', (e) => {
+    e.preventDefault()
+    let id = (e.currentTarget.dataset.id)
+    getMoreInfo()
+  })
 }
 
 function getExpiredChallenges(id) {
@@ -62,6 +72,6 @@ class Challenge {
   Challenge.prototype.formatChallenge = function(){
      return (`
        <h2>Name: ${this.name}</h2>
-       <button id="more-info">More about this challenge...</button>
+       <button class="more-info" data-id="${this.id}">More about this challenge...</button>
        `)
   }
