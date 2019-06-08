@@ -45,15 +45,13 @@ function appendCurrentChallenges(data) {
 function addMoreInfoListener() {
   $('button.more-info').on('click', (e) => {
     e.preventDefault()
-    let user = (e.currentTarget.dataset.user)
-    let id = (e.currentTarget.dataset.id)
-    getMoreInfo(user)
+    let challengeId = (e.currentTarget.dataset.id)
+    getMoreInfo(challengeId)
   })
 }
 
-function getMoreInfo(user) {
-  $.get("/users/" + user + ".json", function(data) {
-    console.log(data)
+function getMoreInfo(challengeId) {
+  $.get("/challenges/" + challengeId + ".json", function(data) {
     appendMoreInfo(data)
   })
 }
@@ -65,16 +63,11 @@ function getExpiredChallenges(id) {
 }
 
 function appendMoreInfo(data) {
-  let challengeArray = data.current_challenges
-  console.log(challengeArray)
-
-  challengeArray => {
-    let newChallenge = new Challenge(challenge)
-    console.log(newChallenge.formatChallenge())
-    let challengeHtml = newChallenge.formatChallenge()
-    $("#current-challenges").append(challengeHtml)
-    addMoreInfoListener()
-   })
+  let challenge = data
+  let newChallenge = new Challenge(challenge)
+  console.log(newChallenge)
+    let fullChallengeHtml = newChallenge.formatFullChallenge()
+    $(".moreInfo").append(fullChallengeHtml)
 }
 
 
@@ -97,3 +90,15 @@ class Challenge {
        <button class="more-info" data-id="${this.id}" data-user="${this.user_id}">More about this challenge...</button>
        `)
   }
+
+
+    Challenge.prototype.formatFullChallenge = function(){
+       return (`
+         <h2>Name: ${this.name}</h2>
+         <p>Start Date: ${this.start_date}</p>
+         <p>End Date: ${this.end_date}</p>
+         <p>Workouts Needed: ${this.workouts_needed}</p>
+         <p>Reward: ${this.reward}</p>
+         <p>Notes: ${cthis.notes}</p>
+         `)
+    }
