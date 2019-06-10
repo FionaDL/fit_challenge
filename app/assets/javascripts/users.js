@@ -34,27 +34,12 @@ function appendCurrentChallenges(data) {
   else {
   challengeArray.forEach(challenge => {
     let newChallenge = new Challenge(challenge)
-    console.log(newChallenge.formatChallenge())
     let challengeHtml = newChallenge.formatChallenge()
     $("#current-challenges").append(challengeHtml)
-    addMoreInfoListener()
-   })
+    })
   }
 }
 
-function addMoreInfoListener() {
-  $('button.more-info').on('click', (e) => {
-    e.preventDefault()
-    let challengeId = (e.currentTarget.dataset.id)
-    getMoreInfo(challengeId)
-  })
-}
-
-function getMoreInfo(challengeId) {
-  $.get("/challenges/" + challengeId + ".json", function(data) {
-    appendMoreInfo(data)
-  })
-}
 
 function getExpiredChallenges(id) {
   $.get("/users/" + id + ".json", function(data) {
@@ -65,9 +50,8 @@ function getExpiredChallenges(id) {
 function appendMoreInfo(data) {
   let challenge = data
   let newChallenge = new Challenge(challenge)
-  console.log(newChallenge)
-    let fullChallengeHtml = newChallenge.formatFullChallenge()
-    $(".moreInfo").append(fullChallengeHtml)
+  let fullChallengeHtml = newChallenge.formatFullChallenge()
+  $("#more-info-challenge").html(" ")
 }
 
 
@@ -85,20 +69,21 @@ class Challenge {
   }
 
   Challenge.prototype.formatChallenge = function(){
+
      return (`
-       <h2>Name: ${this.name}</h2>
-       <button class="more-info" data-id="${this.id}" data-user="${this.user_id}">More about this challenge...</button>
+       <ul>
+       <li><a href= http://localhost:3000/challenges/${this.id}>${this.name}<a></li>
+       </ul>
        `)
   }
 
 
     Challenge.prototype.formatFullChallenge = function(){
        return (`
-         <h2>Name: ${this.name}</h2>
          <p>Start Date: ${this.start_date}</p>
          <p>End Date: ${this.end_date}</p>
          <p>Workouts Needed: ${this.workouts_needed}</p>
          <p>Reward: ${this.reward}</p>
-         <p>Notes: ${cthis.notes}</p>
+         <p>Notes: ${this.notes}</p>
          `)
     }

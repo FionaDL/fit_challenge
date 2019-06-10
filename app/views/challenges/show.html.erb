@@ -8,16 +8,7 @@
        <%= @challenge.user.name %><br>
        <label> Challenge Name: </label>
        <%= @challenge.name %><br>
-       <label> Start Date: </label>
-       <%= @challenge.start_date %><br>
-       <label> End Date: </label>
-       <%= @challenge.end_date %><br>
-       <label> Total Workouts Needed: </label>
-       <%= @challenge.workouts_needed %><br>
-       <label> Reward: </label>
-       <%= @challenge.reward %><br>
-       <label> Notes: </label>
-       <%= @challenge.notes %><br>
+       <button id="more-info" data-challengeId="${@challenge.id}">More Info</button>
        <label> Workouts left to complete this challenge:</label>
        <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
        <label> Workouts Completed in this Challenge: </label>
