@@ -20,6 +20,7 @@ class ChallengesController < ApplicationController
     @user = @challenge.user
     @challengeworkouts = @challenge.challengeworkouts
     @workouts = @challenge.workouts
+    @workout = Workout.new
     respond_to do |f|
       f.html {render :show}
       f.json {render json: @challenge}

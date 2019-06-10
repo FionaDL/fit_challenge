@@ -24,7 +24,13 @@
       </div>
 
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <%= link_to "Add a Workout", new_challenge_workout_path(@challenge), :class => "btn btn-dark" %>
-      </div>
+        <div class= "top-buffer">
+        <%= form_for [@challenge, @workout] do |f|%>
+          <%= f.hidden_field :challenge_id, value: @challenge.id %>
+          <%= f.label "Type of Workout:" %>
+          <%= f.text_field :kind %>
+          <%= f.submit "Add Workout" %>
+        <% end %>
+        </div>
     </div>
   </div>
