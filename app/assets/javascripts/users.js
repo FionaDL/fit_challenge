@@ -47,13 +47,6 @@ function getExpiredChallenges(id) {
   })
 }
 
-function appendMoreInfo(data) {
-  let challenge = data
-  let newChallenge = new Challenge(challenge)
-  let fullChallengeHtml = newChallenge.formatFullChallenge()
-  $("#more-info-challenge").html(" ")
-}
-
 
 class Challenge {
   constructor(challenge) {
@@ -76,14 +69,3 @@ class Challenge {
        </ul>
        `)
   }
-
-
-    Challenge.prototype.formatFullChallenge = function(){
-       return (`
-         <p>Start Date: ${this.start_date}</p>
-         <p>End Date: ${this.end_date}</p>
-         <p>Workouts Needed: ${this.workouts_needed}</p>
-         <p>Reward: ${this.reward}</p>
-         <p>Notes: ${this.notes}</p>
-         `)
-    }

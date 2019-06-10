@@ -8,7 +8,8 @@
        <%= @challenge.user.name %><br>
        <label> Challenge Name: </label>
        <%= @challenge.name %><br>
-       <button id="more-info" data-challengeId="${@challenge.id}">More Info</button>
+       <button id="more-info" data-id="<%= @challenge.id %>">More Info</button>
+       <div id="more-info-challenge"></div>
        <label> Workouts left to complete this challenge:</label>
        <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
        <label> Workouts Completed in this Challenge: </label>

@@ -4,7 +4,8 @@ $(document).ready(function() {
 
 
 function addMoreInfoListener() {
-  $('button.more-info').on('click', (e) => {
+  $('button#more-info').on('click', (e) => {
+    console.log(e)
     e.preventDefault()
     let challengeId = (e.currentTarget.dataset.id)
     getMoreInfo(challengeId)
@@ -19,13 +20,26 @@ function getMoreInfo(challengeId) {
 
 function appendMoreInfo(data) {
   let challenge = data
-  let newChallenge = new Challenge(challenge)
+  let newChallenge = new FullChallenge(challenge)
   let fullChallengeHtml = newChallenge.formatFullChallenge()
   $("#more-info-challenge").append(fullChallengeHtml)
 }
 
+class FullChallenge {
+  constructor(challenge) {
+    this.id = challenge.id
+    this.name = challenge.name
+    this.start_date = challenge.start_date
+    this.end_date = challenge.end_date
+    this.workouts_needed = challenge.workouts_needed
+    this.reward = challenge.reward
+    this.notes = challenge.notes
+    this.user_id = challenge.user_id
+   }
+  }
 
-Challenge.prototype.formatFullChallenge = function(){
+
+FullChallenge.prototype.formatFullChallenge = function(){
    return (`
      <p>Start Date: ${this.start_date}</p>
      <p>End Date: ${this.end_date}</p>
