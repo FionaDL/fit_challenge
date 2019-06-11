@@ -25,7 +25,7 @@
 
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <div class= "top-buffer">
-        <%= form_for [@challenge, @workout] do |f|%>
+        <%= form_for [@challenge, @workout], remote: true, html: {id: :workoutform}, data: {id: @challenge.id } do |f|%>
           <%= f.hidden_field :challenge_id, value: @challenge.id %>
           <%= f.label "Type of Workout:" %>
           <%= f.text_field :kind %>

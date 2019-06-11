@@ -1,3 +1,5 @@
 class WorkoutSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :kind
+
+    has_many :workouts, through: :challengeworkouts
 end
