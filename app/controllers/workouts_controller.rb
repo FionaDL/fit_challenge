@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-
+skip_before_action :verify_authenticity_token
 
   def new
     @workout = Workout.new
@@ -10,8 +10,13 @@ class WorkoutsController < ApplicationController
   def create
     @workout = Workout.create(kind: params[:workout][:kind])
     if @workout.save
-        @challengeworkout = Challengeworkout.create(challenge_id: params[:challenge_id], workout_id: @workout.id )
-      redirect_to edit_challengeworkout_path(@challengeworkout)
+      @challengeworkout = Challengeworkout.create(challenge_id: params[:workout][:challenge_id], workout_id: @workout.id )
+      @challenge_id = params[:workout][:challenge_id]
+        #respond_to do |f|
+          #f.html {redirect_to edit_challengeworkout_path(@challengeworkout)}
+          #f.json {
+        render :json => {:workout => @workout, :challenge_id => @challenge_id}
+        #end
     else
       render 'new'
     end

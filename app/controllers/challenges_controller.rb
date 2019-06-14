@@ -7,9 +7,10 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.create(challenge_params)
+    @user = @challenge.user
     if @challenge.save
       respond_to do |f|
-        f.html {render :show}
+        f.html {redirect_to challenge_path(@challenge)}
         f.json {render json: @challenge}
       end
     else

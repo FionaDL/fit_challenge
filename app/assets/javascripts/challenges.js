@@ -10,13 +10,11 @@ function addMoreInfoListener() {
     getMoreInfo(challengeId)
   })
 
-  $('#workoutform').on('submit', (e) => {
+  $('#workoutform').submit(function(e) {
       e.preventDefault()
       let challengeId = (e.currentTarget.dataset.id)
-      console.log($(this).serialize())
       let values = $(this).serialize()
-
-      $.post('/challenges/' + challengeId + '.json', values).done(function(data) {
+      $.post('/challenges/' + challengeId + '/workouts', values).done(function(data) {
         console.log(data)
       })
   }
