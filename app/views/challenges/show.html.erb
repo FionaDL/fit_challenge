@@ -4,25 +4,21 @@
  <div  class="container">
    <div class="row top-buffer">
      <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-       <label> Challenge Created By:</label>
+       <label><strong> Challenge Created By:</strong></label>
        <%= @challenge.user.name %><br>
-       <label> Challenge Name: </label>
+       <label><strong> Challenge Name:</strong> </label>
        <%= @challenge.name %><br>
-       <button id="more-info" data-id="<%= @challenge.id %>">More Info</button>
+       <button id="more-info" data-id="<%= @challenge.id %>">More Info...</button>
        <div id="more-info-challenge"></div>
-       <label> Workouts left to complete this challenge:</label>
+       <label> <strong>Workouts left to complete this challenge:</strong></label>
        <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
-       <label> Workouts Completed in this Challenge: </label>
+       <label><strong> Workouts Completed in this Challenge:</strong> </label>
        <%= @challenge.workouts.size %>
       </div>
 
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <h5> Workouts: </h5>
-        <% if !@workouts == nil%>
-          <% @workouts.each do |workout| %>
-            <li> Kind of Workout: <%= workout.workout.kind%></li>
-          <%end%>
-        <%end%>
+        <div id="workouts"></div>
       </div>
 
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

@@ -27,9 +27,8 @@ function getCurrentChallenges(id) {
 
 function appendCurrentChallenges(data) {
   let challengeArray = data.current_challenges
-  console.log(challengeArray)
-  if (challengeArray == null) {
-    $("#challengeName").append("No Current Challenges Exist.")
+  if (!challengeArray) {
+    $("#current-challenges").html("<p>No Current Challenges Exist.</p>")
   }
   else {
   challengeArray.forEach(challenge => {
@@ -41,10 +40,26 @@ function appendCurrentChallenges(data) {
 }
 
 
+
 function getExpiredChallenges(id) {
   $.get("/users/" + id + ".json", function(data) {
-    console.log(data)
+    appendExpiredChallenges(data)
   })
+}
+
+function appendExpiredChallenges(data) {
+  let challengeArray = data.expired_challenges
+  console.log(challengeArray)
+  if (!challengeArray) {
+    $("#expired-challenges").html("<p>No Expired Challenges Exist.</p>")
+  }
+  else {
+  challengeArray.forEach(challenge => {
+    let newChallenge = new Challenge(challenge)
+    let challengeHtml = newChallenge.formatChallenge()
+    $("#expired-challenges").append(challengeHtml)
+    })
+  }
 }
 
 
@@ -62,7 +77,6 @@ class Challenge {
   }
 
   Challenge.prototype.formatChallenge = function(){
-
      return (`
        <ul>
        <li><a href= http://localhost:3000/challenges/${this.id}>${this.name}<a></li>

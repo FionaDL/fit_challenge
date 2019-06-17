@@ -15,7 +15,9 @@ function addMoreInfoListener() {
       let challengeId = (e.currentTarget.dataset.id)
       let values = $(this).serialize()
       $.post('/challenges/' + challengeId + '/workouts', values).done(function(data) {
-        console.log(data)
+        let newWorkout = new Workout(data)
+        workoutHtml = newWorkout.formatWorkout()
+        $('#workouts').append(workoutHtml)
       })
   }
 )
@@ -56,4 +58,17 @@ FullChallenge.prototype.formatFullChallenge = function(){
      <p>Reward: ${this.reward}</p>
      <p>Notes: ${this.notes}</p>
      `)
+}
+
+class Workout {
+  constructor(workout) {
+    this.id = workout.workout.id
+    this.kind = workout.workout.kind
+  }
+}
+
+Workout.prototype.formatWorkout = function(){
+  return (`
+    <p>Kind: ${this.kind}</p>
+    `)
 }
