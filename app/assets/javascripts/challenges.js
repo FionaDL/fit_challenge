@@ -1,6 +1,6 @@
-$(document).ready(function() {
-  addMoreInfoListener()
-});
+$(document).ready(() => {
+  eventListeners()
+})
 
 
 function addMoreInfoListener() {
