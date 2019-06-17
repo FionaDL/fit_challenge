@@ -1,8 +1,8 @@
 
 
-$(document).ready(function() {
+$(document).ready(() => {
   eventListeners()
-});
+})
 
 function eventListeners() {
   $('button#current-challenge-button').on('click', (e) => {
