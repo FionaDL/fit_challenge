@@ -39,8 +39,6 @@ function appendCurrentChallenges(data) {
   }
 }
 
-
-
 function getExpiredChallenges(id) {
   $.get("/users/" + id + ".json", function(data) {
     appendExpiredChallenges(data)
