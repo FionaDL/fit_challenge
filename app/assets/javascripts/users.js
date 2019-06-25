@@ -17,7 +17,30 @@ function eventListeners() {
     getExpiredChallenges(id)
   })
 
+  $('button#all_users').on('click', (e) => {
+    getUsers()
+  })
+
 }
+
+function getUsers() {
+  $.get("/users.json", function(data) {
+    console.log(data)
+    appendUsers(data)
+  })
+}
+
+function appendUsers(data) {
+  let users = data.users
+  let eachUser = users.map((user) => {
+     return (`
+       <li><a data-name="${user.name}" href= http://localhost:3000/users/${user.id}>${user.name}<a></li>
+       `)
+  })
+  $(".show_users").append(eachUser.sort())
+}
+
+
 
 function getCurrentChallenges(id) {
   $.get("/users/" + id + ".json", function(data) {
@@ -47,7 +70,6 @@ function getExpiredChallenges(id) {
 
 function appendExpiredChallenges(data) {
   let challengeArray = data.expired_challenges
-  console.log(challengeArray)
   if (!challengeArray) {
     $("#expired-challenges").html("<p>No Expired Challenges Exist.</p>")
   }
