@@ -25,7 +25,6 @@ function eventListeners() {
 
 function getUsers() {
   $.get("/users.json", function(data) {
-    console.log(data)
     appendUsers(data)
   })
 }
