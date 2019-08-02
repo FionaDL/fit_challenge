@@ -1,5 +1,10 @@
 class ChallengesController < ApplicationController
 
+  def index
+    @challenges = Challenge.all
+    @user = current_user
+  end
+
   def new
     @user = current_user
     @challenge = Challenge.new

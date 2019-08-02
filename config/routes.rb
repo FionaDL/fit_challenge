@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
  #resources :challengeworkouts, only: [:edit, :update]
 
- resources :challenges, only: [:new, :create, :show] do
+ resources :challenges, only: [:index, :new, :create, :show] do
    resources :workouts, only: [:new, :create, :index]
  end
 
