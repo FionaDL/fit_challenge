@@ -22,19 +22,48 @@ body {
    padding: 25px;
    justify-content: center;
    align-items: center;
+   font-family: serif;
  }
 
  .top-buffer { margin-top:20px; }
 
  .middle_container {
-   padding-top: 30px;
+   padding-top: 40px;
    text-align: center;
+   font-family: georgia;
+   font-size: 5em;
  }
 
  .button_index {
    display: inline-block;
    padding-top: 10px;
  }
+
+ #welcome_container {
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  width:30em;
+  height:18em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  text-align: center;
+  padding-top: 30px;
+ }
+
+ #circle {
+    width: 50%;
+    height: auto;
+    background-color: #E7E7E7;
+    border-color: #343A40;
+    border-width: thin;
+    border-style: solid;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+  }
+
 
 
 

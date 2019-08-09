@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_153507) do
+ActiveRecord::Schema.define(version: 2019_08_03_221336) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_153507) do
     t.string "reward"
     t.text "notes"
     t.integer "user_id"
+    t.boolean "completed"
   end
 
   create_table "challengeworkouts", force: :cascade do |t|

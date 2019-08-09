@@ -14,6 +14,9 @@
        <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
        <label><strong> Workouts Completed in this Challenge:</strong> </label>
        <%= @challenge.workouts.size %>
+       <% if @challenge.completed %>
+          <h3> Challenge Completed!<h3>
+      <%end%>
       </div>
 
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
    if !@user.challenges.empty?
      @current_challenges = @user.challenges.current_challenges
      @expired_challenges = @user.challenges.expired_challenges
+     @completed_challenges = @user.challenges.completed_challenges
    end
    respond_to do |f|
      f.html {render :show}

@@ -4,29 +4,39 @@
 <div  class="container">
   <div class="row top-buffer">
     <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <h5> User Information: </h5>
-      <label> Name: </label>
-        <%= @user.name %><br>
+      <div id="circle">
+      <h5> <%= @user.name %>: </h5>
       <label> Height: </label>
         <%= @user.height %><br>
       <label> Weight: </label>
         <%= @user.weight %><br>
       <label> Quote: </label>
         <%= @user.quote %><br>
+      </div>
+    <div id="circle">
+        <h5> Challenges Completed: </h5>
+          <%@completed_challenges.each do |challenge|%>
+          <%=challenge.name%><br>
+          <%end%>
+      </div>
     </div>
 
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div id="circle">
           <button id="current-challenge-button" data-id="<%= @user.id %>">Current Challenges...</button>
           <div id="current-challenges"></div>
+        </div>
      </div>
       <div  class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div id="circle">
           <button id="expired-challenge-button" data-id="<%=@user.id%>">Expired Challenges...</button>
           <div id="expired-challenges"></div>
+          </div>
       </div>
   </div>
 </div>
 
-<button id="all_users">Get All Users</button>
+<!-- <button id="all_users">Get All Users</button> -->
 
 <div class="show_users">
 </div>
