@@ -8,10 +8,6 @@ body {
   background-image: url("crossfit-dumbbell-equipment-669578.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-/*  background: -moz-linear-gradient(-45deg, #e1ffff 0%, #e1ffff 7%, #e1ffff 12%, #fdffff 12%, #e6f8fd 30%, #c8eefb 54%, #bee4f8 75%, #b1d8f5 100%); /* FF3.6-15 */
-/*  background: -webkit-linear-gradient(-45deg, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%); /* Chrome10-25,Safari5.1-6 */
-/*  background: linear-gradient(135deg, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-/*  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#b1d8f5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
 
@@ -23,6 +19,7 @@ body {
    justify-content: center;
    align-items: center;
    font-family: serif;
+   margin-top: 30px;
  }
 
  .top-buffer { margin-top:20px; }
@@ -39,6 +36,10 @@ body {
    padding-top: 10px;
  }
 
+ a {
+   color: gray;
+ }
+
  #welcome_container {
   position:fixed;
   top: 50%;
@@ -53,15 +54,27 @@ body {
  }
 
  #circle {
-    width: 50%;
+    width: 80%;
     height: auto;
     background-color: #E7E7E7;
     border-color: #343A40;
     border-width: thin;
     border-style: solid;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
+  }
+
+  #lists {
+    list-style-type: none;
+    margin: 0;
+    padding-top: 5px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  #challenge_name {
+    text-align: center;
   }
 
 

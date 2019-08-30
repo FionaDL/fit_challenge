@@ -23,52 +23,22 @@ function eventListeners() {
 
 }
 
-//function getUsers() {
-//   $.get("/users.json", function(data) {
-//     appendUsers(data)
-//   })
-// }
-
 function getUsers() {
   $.get("/users.json", function(data) {
-    console.log(data)
-    let users = data.users
-    users.sort(function(a, b) {
-      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-    }
-
-  // names must be equal
-  return 0;
-});
-    appendUsers(users)
+    appendUsers(data)
   })
 }
 
-function appendUsers(users) {
 
+function appendUsers(data) {
+  let users = data.users
   let eachUser = users.map((user) => {
      return (`
-       <li><a data-name="${user.name}" href= http://localhost:3000/users/${user.id}>${user.name}<a></li>
-       `)
-  })
-  $(".show_users").append(eachUser)
-}
-
-// function appendUsers(data) {
-//   let users = data.users
-//   let eachUser = users.map((user) => {
-//      return (`
-//        <li><a data-name="${user.name}" href= http://localhost:3000/users/${user.id}>${user.name}<a></li>
-//        `)
-//   })
-//   $(".show_users").append(eachUser.sort())
-// }
+       <li><a data-name="${user.name}" href= http://localhost:3000/users/${user.id}>${user.name}<a></li>        `
+)
+   })
+   $(".show_users").append(eachUser.sort())
+ }
 
 
 
@@ -128,7 +98,7 @@ class Challenge {
 
   Challenge.prototype.formatChallenge = function(){
      return (`
-       <ul>
+       <ul id="lists">
        <li><a href= http://localhost:3000/challenges/${this.id}>${this.name}<a></li>
        </ul>
        `)
