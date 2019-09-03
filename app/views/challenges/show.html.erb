@@ -4,11 +4,13 @@
 <div class="container">
    <div class="row top-buffer">
      <div  class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-       <div id="circle">
+       <div class="circle">
        <label><strong> Challenge Created By:</strong></label>
        <%= @challenge.user.name %><br>
        <button id="more-info" data-id="<%= @challenge.id %>">More Info...</button>
        <div id="more-info-challenge"></div>
+       </div>
+        <div class="circle">
        <label> <strong>Workouts left to complete this challenge:</strong></label>
        <%= @challenge.left_to_complete(@challenge.workouts_needed) %><br>
        <label><strong> Workouts Completed in this Challenge:</strong> </label>
