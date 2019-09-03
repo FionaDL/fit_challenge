@@ -4,7 +4,7 @@ $(document).ready(() => {
 
 
 function addMoreInfoListener() {
-  $('button#more-info').on('click', (e) => {
+  $('button#more-info').one('click', (e) => {
     e.preventDefault()
     let challengeId = (e.currentTarget.dataset.id)
     getMoreInfo(challengeId)
